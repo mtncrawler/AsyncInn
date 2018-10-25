@@ -11,14 +11,14 @@ namespace AsyncInn.Models
 
         public int RoomNumber { get; set; }
 
-        public int RoomID { get; set; }
+        public decimal RoomID { get; set; }
 
-        public int Rate { get; set; }
+        public decimal Rate { get; set; }
 
         public bool PetFriendly { get; set; }
 
-        public ICollection<Hotel> Hotels { get; set; }
+        public Hotel Hotels { get; set; }
 
-        public ICollection<Room> Rooms { get; set; }
+        public Room Rooms { get; set; }
     }
 }

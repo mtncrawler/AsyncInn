@@ -13,7 +13,7 @@ namespace AsyncInn.Models
 
         public int Layout { get; set; }
 
-        public ICollection<HotelRoom> Rooms { get; set; }
+        public ICollection<HotelRoom> HotelRooms { get; set; }
 
         public ICollection<RoomAmenities> RoomAmenity { get; set; }
     }
