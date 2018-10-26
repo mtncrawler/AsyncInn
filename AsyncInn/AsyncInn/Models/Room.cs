@@ -10,10 +10,10 @@ namespace AsyncInn.Models
     {
         public int ID { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
-        //[Required]
-        //[EnumDataType(typeof(Layout))]
+        [Required]
         public Layout Layout { get; set; }
 
         public ICollection<HotelRoom> HotelRooms { get; set; }
