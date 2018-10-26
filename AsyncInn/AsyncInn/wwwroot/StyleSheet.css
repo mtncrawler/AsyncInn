@@ -1,10 +1,44 @@
 ﻿
 h1 {
-    font-size: 75px;
-    font-family:cursive;
+    padding: 5px 0;
+    font-size: 95px;
+    font-family: serif;
     text-align: center;
+    letter-spacing: 5px;
 }
 
 body {
-    font-size: 24px;
+    
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: ghostwhite;
+}
+
+li {
+    float: left;
+    font-family: 'Malgun Gothic';
+    font-size: 18px;
+}
+
+    li a {
+        display: block;
+        color: #666;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+        li a:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+        li a.active {
+            color: white;
+            background-color: dodgerblue;
+        }
