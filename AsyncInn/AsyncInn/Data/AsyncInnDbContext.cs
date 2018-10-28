@@ -115,8 +115,42 @@ namespace AsyncInn.Data
                     Layout = (Layout)1
                 }
                 );
+
+            modelBuilder.Entity<Amenities>().HasData(
+                new Amenities
+                {
+                    ID = 1,
+                    Name = "A/C"
+                },
+
+                new Amenities {
+                    ID = 2,
+                    Name = "Waterview"
+                },
+
+                new Amenities
+                {
+                    ID = 3,
+                    Name = "Hot tub"
+                },
+
+                new Amenities
+                {
+                    ID = 4,
+                    Name = "Espresso machine"
+                },
+
+                new Amenities
+                {
+                    ID = 5,
+                    Name = "Vinyl player"
+                }
+
+                );
+
+
         }
-        
+
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<HotelRoom> HotelRooms { get; set; }
         public DbSet<Room> Rooms { get; set; }
