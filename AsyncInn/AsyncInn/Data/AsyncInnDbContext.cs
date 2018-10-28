@@ -27,6 +27,7 @@ namespace AsyncInn.Data
             modelBuilder.Entity<Hotel>().HasData(
                 new Hotel
                 {
+                    ID = 1,
                     Name = "Holiday Daze",
                     Street = "10 Derp St",
                     City = "Seattle",
@@ -36,6 +37,7 @@ namespace AsyncInn.Data
                 },
                 new Hotel
                 {
+                    ID = 2,
                     Name = "Days Out",
                     Street = "123 Western St",
                     City = "Seattle",
@@ -45,6 +47,7 @@ namespace AsyncInn.Data
                 },
                 new Hotel
                 {
+                    ID = 3,
                     Name = "Ace Motel",
                     Street = "987 Oregon St",
                     City = "Portland",
@@ -54,6 +57,7 @@ namespace AsyncInn.Data
                 },
                 new Hotel
                 {
+                    ID = 4,
                     Name = "Two Seasons",
                     Street = "4 Windy Way",
                     City = "Austin ",
@@ -63,6 +67,7 @@ namespace AsyncInn.Data
                 },
                 new Hotel
                 {
+                    ID = 5,
                     Name = "Best Eastern",
                     Street = "678 Leeward St",
                     City = "Boston",
@@ -75,37 +80,43 @@ namespace AsyncInn.Data
             modelBuilder.Entity<Room>().HasData(
                 new Room
                 {
+                    ID = 1,
                     Name = "Honeymoon Suite",
                     Layout = (Layout)1
                 },
                 new Room
                 {
-                    Name = "Party for One",
+                    ID = 2,
+                    Name = "Solo Cup",
                     Layout = 0
                 },
                 new Room
                 {
+                    ID = 3,
                     Name = "Sounders Soiree",
-                    Layout = 0
+                    Layout = (Layout)2
                 },
                 new Room
                 {
-                    Name = "Holiday Daze",
-                    Layout = 0
+                    ID = 4,
+                    Name = "Tropical Escape",
+                    Layout = (Layout)2
                 },
                 new Room
                 {
-                    Name = "Holiday Daze",
-                    Layout = 0
+                    ID = 5,
+                    Name = "Mountain Refuge",
+                    Layout = (Layout)2
                 },
                 new Room
                 {
-                    Name = "Holiday Daze",
-                    Layout = 0
-                },
+                    ID = 6,
+                    Name = "Urban Delight",
+                    Layout = (Layout)1
+                }
                 );
         }
-
+        
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<HotelRoom> HotelRooms { get; set; }
         public DbSet<Room> Rooms { get; set; }
