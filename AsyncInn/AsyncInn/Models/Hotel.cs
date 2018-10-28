@@ -14,6 +14,7 @@ namespace AsyncInn.Models
         public string Name { get; set; }
 
         [Required]
+        [Display(Name = "Address")]
         public string Street { get; set; }
 
         [Required]
