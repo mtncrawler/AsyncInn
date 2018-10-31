@@ -7,5 +7,12 @@ namespace AsyncInn.Models.Interfaces
 {
     public interface IAmenities
     {
+        Task AddAmenity(Amenities amenity);
+
+        Task UpdateAmenity(Amenities amenity);
+
+        Task DeleteAmenity(Amenities amenity);
+
+        Task<List<Amenities>> GetAmenties();
     }
 }
