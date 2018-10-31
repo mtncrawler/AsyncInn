@@ -15,6 +15,6 @@ namespace AsyncInn.Models.Interfaces
 
         Task<List<Hotel>> GetHotels();
 
-        Task<Hotel> GetHotel(int id);
+        Task<Hotel> GetHotel(int? id);
     }
 }

@@ -15,6 +15,6 @@ namespace AsyncInn.Models.Interfaces
 
         Task<List<Amenities>> GetAmenities();
 
-        Task<Amenities> GetAmenity(int id);
+        Task<Amenities> GetAmenity(int? id);
     }
 }

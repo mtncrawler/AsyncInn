@@ -15,6 +15,6 @@ namespace AsyncInn.Models.Interfaces
 
         Task<List<Room>> GetRooms();
 
-        Task<Room> GetRoom(int id);
+        Task<Room> GetRoom(int? id);
     }
 }
