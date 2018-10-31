@@ -30,7 +30,7 @@ namespace AsyncInn.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Hotel> GetHotel(int id)
+        public async Task<Hotel> GetHotel(int? id)
         {
             return await _context.Hotels.FirstOrDefaultAsync(hotel => hotel.ID == id);   
         }
