@@ -3,14 +3,16 @@ using AsyncInn.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AsyncInn.Migrations
 {
     [DbContext(typeof(AsyncInnDbContext))]
-    partial class AsyncInnDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181029220225_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,8 +30,6 @@ namespace AsyncInn.Migrations
 
                     b.HasKey("ID");
 
-
-
                     b.ToTable("Amenity");
 
                     b.HasData(
@@ -39,7 +39,6 @@ namespace AsyncInn.Migrations
                         new { ID = 4, Name = "Espresso machine" },
                         new { ID = 5, Name = "Vinyl player" }
                     );
-
                 });
 
             modelBuilder.Entity("AsyncInn.Models.Hotel", b =>
@@ -87,7 +86,7 @@ namespace AsyncInn.Migrations
 
                     b.Property<bool>("PetFriendly");
 
-                    b.Property<int>("Rate");
+                    b.Property<decimal>("Rate");
 
                     b.Property<int>("RoomID");
 
