@@ -7,6 +7,7 @@ namespace AsyncInn.Models
 {
     public class HotelRoom
     {
+
         public int HotelID { get; set; }
 
         public int RoomNumber { get; set; }
@@ -17,8 +18,8 @@ namespace AsyncInn.Models
 
         public bool PetFriendly { get; set; }
 
-        public Hotel Hotels { get; set; }
+        public Hotel Hotel { get; set; }
 
-        public Room Rooms { get; set; }
+        public Room Room { get; set; }
     }
 }

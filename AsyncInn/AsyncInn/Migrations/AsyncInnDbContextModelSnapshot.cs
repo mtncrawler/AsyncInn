@@ -28,9 +28,7 @@ namespace AsyncInn.Migrations
 
                     b.HasKey("ID");
 
-
-
-                    b.ToTable("Amenity");
+                    b.ToTable("Amenities");
 
                     b.HasData(
                         new { ID = 1, Name = "A/C" },
@@ -39,7 +37,6 @@ namespace AsyncInn.Migrations
                         new { ID = 4, Name = "Espresso machine" },
                         new { ID = 5, Name = "Vinyl player" }
                     );
-
                 });
 
             modelBuilder.Entity("AsyncInn.Models.Hotel", b =>
@@ -138,12 +135,12 @@ namespace AsyncInn.Migrations
 
             modelBuilder.Entity("AsyncInn.Models.HotelRoom", b =>
                 {
-                    b.HasOne("AsyncInn.Models.Hotel", "Hotels")
+                    b.HasOne("AsyncInn.Models.Hotel", "Hotel")
                         .WithMany("HotelRooms")
                         .HasForeignKey("HotelID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("AsyncInn.Models.Room", "Rooms")
+                    b.HasOne("AsyncInn.Models.Room", "Room")
                         .WithMany("HotelRooms")
                         .HasForeignKey("RoomID")
                         .OnDelete(DeleteBehavior.Cascade);
