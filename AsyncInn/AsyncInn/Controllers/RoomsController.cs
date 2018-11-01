@@ -26,6 +26,17 @@ namespace AsyncInn.Controllers
             return View(await _rooms.GetRooms());
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Index(string searchterm)
+        {
+            string searchWords = searchterm;
+            var allRooms = await _rooms.GetRooms();
+
+            IEnumerable<Room> foundRooms = allRooms.Where(rm => rm.Name.ToLower().Contains(searchWords));
+            
+            return View(foundRooms);
+        }
+
         // GET: Rooms/Details/5
         public async Task<IActionResult> Details(int? id)
         {
