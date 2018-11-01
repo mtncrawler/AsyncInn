@@ -49,7 +49,7 @@ namespace AsyncInn.Views
         // GET: RoomAmenities/Create
         public IActionResult Create()
         {
-            ViewData["AmenitiesID"] = new SelectList(_context.Amenity, "ID", "ID");
+            ViewData["AmenitiesID"] = new SelectList(_context.Amenities, "ID", "ID");
             ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name");
             return View();
         }
@@ -67,7 +67,7 @@ namespace AsyncInn.Views
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AmenitiesID"] = new SelectList(_context.Amenity, "ID", "ID", roomAmenities.AmenitiesID);
+            ViewData["AmenitiesID"] = new SelectList(_context.Amenities, "ID", "ID", roomAmenities.AmenitiesID);
             ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", roomAmenities.RoomID);
             return View(roomAmenities);
         }
@@ -85,7 +85,7 @@ namespace AsyncInn.Views
             {
                 return NotFound();
             }
-            ViewData["AmenitiesID"] = new SelectList(_context.Amenity, "ID", "ID", roomAmenities.AmenitiesID);
+            ViewData["AmenitiesID"] = new SelectList(_context.Amenities, "ID", "ID", roomAmenities.AmenitiesID);
             ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", roomAmenities.RoomID);
             return View(roomAmenities);
         }
@@ -122,7 +122,7 @@ namespace AsyncInn.Views
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AmenitiesID"] = new SelectList(_context.Amenity, "ID", "ID", roomAmenities.AmenitiesID);
+            ViewData["AmenitiesID"] = new SelectList(_context.Amenities, "ID", "ID", roomAmenities.AmenitiesID);
             ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", roomAmenities.RoomID);
             return View(roomAmenities);
         }

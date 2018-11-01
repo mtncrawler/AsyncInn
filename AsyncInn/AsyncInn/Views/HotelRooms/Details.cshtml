@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "_Layout";
 }
 
 <h2>Details</h2>
@@ -29,10 +30,10 @@
             @Html.DisplayFor(model => model.PetFriendly)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Hotels)
+            @Html.DisplayNameFor(model => model.Hotel)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Hotels.ID)
+            @Html.DisplayFor(model => model.Hotel.ID)
         </dd>
     </dl>
 </div>

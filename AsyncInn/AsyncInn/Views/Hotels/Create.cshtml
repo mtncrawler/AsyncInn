@@ -2,13 +2,10 @@
 
 @{
     ViewData["Title"] = "Create";
+    Layout = "_Layout";
 }
 
-<head>
-    <link rel="stylesheet" href="~/StyleSheet.css" />
-</head>
-
-<h2>Add New Hotel</h2>
+<h2>Add Hotel</h2>
 
 <hr />
 <div class="row">
@@ -56,6 +53,6 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
+@*@section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+}*@
