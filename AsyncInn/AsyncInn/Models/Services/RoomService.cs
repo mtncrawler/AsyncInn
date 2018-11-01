@@ -17,15 +17,10 @@ namespace AsyncInn.Models.Services
             _context = context;
         }
 
-        public async Task Addroom(Room room)
+        public async Task AddRoom(Room room)
         {
             _context.Rooms.Add(room);
             await _context.SaveChangesAsync();
-        }
-
-        public Task AddRoom(Room room)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task DeleteRoom(int id)
