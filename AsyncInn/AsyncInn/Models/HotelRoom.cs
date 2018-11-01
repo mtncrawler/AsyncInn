@@ -8,13 +8,13 @@ namespace AsyncInn.Models
 {
     public class HotelRoom
     {
-        [Display(Name = "Hotel ID")]
+        [Display(Name = "Hotel")]
         public int HotelID { get; set; }
 
         [Display(Name = "Room Number")]
         public int RoomNumber { get; set; }
 
-        [Display(Name = "Room ID")]
+        [Display(Name = "Room")]
         public int RoomID { get; set; }
 
         public int Rate { get; set; }
