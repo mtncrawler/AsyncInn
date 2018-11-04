@@ -9,6 +9,9 @@ namespace asyncInnTest
 {
     public class UnitTest1
     {
+        /// <summary>
+        /// get room name
+        /// </summary>
         [Fact]
         public void CanGetRoomName()
         {
@@ -18,6 +21,9 @@ namespace asyncInnTest
             Assert.Equal("Foggy", room.Name);
         }
 
+        /// <summary>
+        /// set room name
+        /// </summary>
         [Fact]
         public void SetRoomName()
         {
@@ -29,6 +35,9 @@ namespace asyncInnTest
             Assert.Equal("Steamy", room.Name);
         }
 
+        /// <summary>
+        /// create and read room table
+        /// </summary>
         [Fact]
         public async void CreateAndReadRoom()
         {
@@ -51,6 +60,9 @@ namespace asyncInnTest
             }
         }
 
+        /// <summary>
+        /// update room table
+        /// </summary>
         [Fact]
         public async void UpdateRoom()
         {
@@ -77,6 +89,9 @@ namespace asyncInnTest
             }
         }
 
+        /// <summary>
+        /// delete from room table
+        /// </summary>
         [Fact]
         public async void DeleteRoom()
         {
@@ -102,6 +117,9 @@ namespace asyncInnTest
             }
         }
 
+        /// <summary>
+        /// get hotel name
+        /// </summary>
         [Fact]
         public void CanGetHotelName()
         {
@@ -110,6 +128,9 @@ namespace asyncInnTest
             Assert.Equal("Hotel Motel Holiday Inn", hotel.Name);
         }
 
+        /// <summary>
+        /// set hotel name
+        /// </summary>
         [Fact]
         public void CanSetHotelName()
         {
@@ -120,6 +141,9 @@ namespace asyncInnTest
             Assert.Equal("Hotel California", hotel.Name);
         }
 
+        /// <summary>
+        /// get hotel address
+        /// </summary>
         [Fact]
         public void CanGetHotelAddress()
         {
@@ -135,6 +159,9 @@ namespace asyncInnTest
             Assert.Equal("98109", hotel.ZipCode);
         }
 
+        /// <summary>
+        /// set hotel address
+        /// </summary>
         [Fact]
         public void CanSetHotelAddress()
         {
@@ -155,6 +182,9 @@ namespace asyncInnTest
             Assert.Equal("98100", hotel.ZipCode);
         }
 
+        /// <summary>
+        /// get hotel phone
+        /// </summary>
         [Fact]
         public void CanGetHotelPhone()
         {
@@ -164,6 +194,9 @@ namespace asyncInnTest
             Assert.Equal("404-317-5131", hotel.Phone);
         }
 
+        /// <summary>
+        /// set hotel phone
+        /// </summary>
         [Fact]
         public void CanSetHotelPhone()
         {
@@ -174,6 +207,9 @@ namespace asyncInnTest
             Assert.Equal("770-410-0233", hotel.Phone);
         }
 
+        /// <summary>
+        /// create and read from hotel table
+        /// </summary>
         [Fact]
         public async void CreateAndReadHotel()
         {
@@ -196,6 +232,9 @@ namespace asyncInnTest
             }
         }
 
+        /// <summary>
+        /// update hotel table
+        /// </summary>
         [Fact]
         public async void UpdateHotel()
         {
@@ -221,6 +260,9 @@ namespace asyncInnTest
             }
         }
 
+        /// <summary>
+        /// delete from hotel table
+        /// </summary>
         [Fact]
         public async void DeleteHotel()
         {
@@ -243,6 +285,9 @@ namespace asyncInnTest
             }
         }
 
+        /// <summary>
+        /// get amenity name 
+        /// </summary>
         [Fact]
         public void CanGetAmenity()
         {
@@ -252,6 +297,9 @@ namespace asyncInnTest
             Assert.Equal("A/C", am.Name);
         }
 
+        /// <summary>
+        /// set amenity name
+        /// </summary>
         [Fact]
         public void CanSetAmenity()
         {
@@ -262,6 +310,9 @@ namespace asyncInnTest
             Assert.Equal("Hottub", am.Name);
         }
 
+        /// <summary>
+        /// create and read from amenity table
+        /// </summary>
         [Fact]
         public async void CreateAndReadAmenity()
         {
@@ -284,6 +335,9 @@ namespace asyncInnTest
             }
         }
 
+        /// <summary>
+        /// update amenity table
+        /// </summary>
         [Fact]
         public async void UpdateAmenity()
         {
@@ -310,6 +364,9 @@ namespace asyncInnTest
             }
         }
 
+        /// <summary>
+        /// delete from amenity table
+        /// </summary>
         [Fact]
         public async void DeleteAmenity()
         {
@@ -335,6 +392,9 @@ namespace asyncInnTest
             }
         }
 
+        /// <summary>
+        /// get hotel room number
+        /// </summary>
         [Fact]
         public void CanGetHotelRoomNumber()
         {
@@ -344,6 +404,9 @@ namespace asyncInnTest
             Assert.Equal(666, hr.RoomNumber);
         }
 
+        /// <summary>
+        /// set hotel room number
+        /// </summary>
         [Fact]
         public void CanSetHotelRoomNumber()
         {
@@ -354,6 +417,9 @@ namespace asyncInnTest
             Assert.Equal(999, hr.RoomNumber);
         }
 
+        /// <summary>
+        /// get hotel room rate
+        /// </summary>
         [Fact]
         public void CanGetHotelRoomRate()
         {
@@ -363,6 +429,9 @@ namespace asyncInnTest
             Assert.Equal(199, hr.Rate);
         }
 
+        /// <summary>
+        /// set hotel room rate
+        /// </summary>
         [Fact]
         public void CanSetHotelRoomRate()
         {
@@ -373,6 +442,9 @@ namespace asyncInnTest
             Assert.Equal(100, hr.Rate);
         }
 
+        /// <summary>
+        /// get hotel room petfriendly 
+        /// </summary>
         [Fact]
         public void CanGetHotelRoomPetFriendliness()
         {
@@ -382,6 +454,9 @@ namespace asyncInnTest
             Assert.True(hr.PetFriendly);
         }
 
+        /// <summary>
+        /// set hotel room petfriendly
+        /// </summary>
         [Fact]
         public void CanSetHotelRoomPetFriendliness()
         {
@@ -392,6 +467,9 @@ namespace asyncInnTest
             Assert.False(hr.PetFriendly);
         }
 
+        /// <summary>
+        /// create and read hotel room table
+        /// </summary>
         [Fact]
         public async void CreateAndReadHotelRoom()
         {
@@ -414,6 +492,9 @@ namespace asyncInnTest
             }
         }
 
+        /// <summary>
+        /// update hotel room table
+        /// </summary>
         [Fact]
         public async void UpdateHotelRoom()
         {
@@ -440,6 +521,9 @@ namespace asyncInnTest
             }
         }
 
+        /// <summary>
+        /// delete from hotel room table
+        /// </summary>
         [Fact]
         public async void DeleteHotelRoom()
         {
@@ -465,6 +549,9 @@ namespace asyncInnTest
             }
         }
 
+        /// <summary>
+        /// create and read from room amenity table
+        /// </summary>
         [Fact]
         public async void CreateAndReadRoomAmenity()
         {
@@ -490,6 +577,9 @@ namespace asyncInnTest
             }
         }
 
+        /// <summary>
+        /// delete from room amenity table
+        /// </summary>
         [Fact]
         public async void DeleteRoomAmenity()
         {

@@ -26,6 +26,11 @@ namespace AsyncInn.Controllers
             return View(await _rooms.GetRooms());
         }
 
+        /// <summary>
+        /// retrieve rooms based on search words entered by user
+        /// </summary>
+        /// <param name="searchterm">search words</param>
+        /// <returns>search results</returns>
         [HttpPost]
         public async Task<IActionResult> Index(string searchterm)
         {
