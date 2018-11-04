@@ -33,7 +33,7 @@ namespace AsyncInn
 
             services.AddDbContext<AsyncInnDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("ProductionDb"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
             services.AddTransient<IHotel, HotelService>();
