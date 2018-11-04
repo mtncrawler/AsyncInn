@@ -244,6 +244,98 @@ namespace asyncInnTest
         }
 
         [Fact]
+        public void CanGetAmenity()
+        {
+            Amenities am = new Amenities();
+            am.Name = "A/C";
+
+            Assert.Equal("A/C", am.Name);
+        }
+
+        [Fact]
+        public void CanSetAmenity()
+        {
+            Amenities am = new Amenities();
+            am.Name = "A/C";
+
+            am.Name = "Hottub";
+            Assert.Equal("Hottub", am.Name);
+        }
+
+        [Fact]
+        public async void CreateAndReadAmenity()
+        {
+            DbContextOptions<AsyncInnDbContext> options =
+            new DbContextOptionsBuilder<AsyncInnDbContext>()
+            .UseInMemoryDatabase("CreateAmenity")
+            .Options;
+
+            using (AsyncInnDbContext context = new AsyncInnDbContext(options))
+            {
+                Amenities ament = new Amenities();
+                ament.Name = "Heated toliet";
+
+                context.Amenities.Add(ament);
+                await context.SaveChangesAsync();
+
+                var amenities = await context.Amenities.FirstOrDefaultAsync(x => x.Name == ament.Name);
+
+                Assert.Equal("Heated toliet", amenities.Name);
+            }
+        }
+
+        [Fact]
+        public async void UpdateAmenity()
+        {
+            DbContextOptions<AsyncInnDbContext> options =
+            new DbContextOptionsBuilder<AsyncInnDbContext>()
+            .UseInMemoryDatabase("UpdateAmenity")
+            .Options;
+
+            using (AsyncInnDbContext context = new AsyncInnDbContext(options))
+            {
+                Amenities ament = new Amenities();
+                ament.Name = "Heated toliet";
+
+                context.Amenities.Add(ament);
+                await context.SaveChangesAsync();
+
+                ament.Name = "Plunger";
+                context.Amenities.Update(ament);
+                await context.SaveChangesAsync();
+
+                var amenities = await context.Amenities.FirstOrDefaultAsync(x => x.Name == ament.Name);
+
+                Assert.Equal("Plunger", amenities.Name);
+            }
+        }
+
+        [Fact]
+        public async void DeleteAmenity()
+        {
+            DbContextOptions<AsyncInnDbContext> options =
+            new DbContextOptionsBuilder<AsyncInnDbContext>()
+            .UseInMemoryDatabase("DeleteAmenity")
+            .Options;
+
+            using (AsyncInnDbContext context = new AsyncInnDbContext(options))
+            {
+                Amenities ament = new Amenities();
+                ament.Name = "Heated toliet";
+
+                context.Amenities.Add(ament);
+                await context.SaveChangesAsync();
+
+                context.Amenities.Remove(ament);
+                await context.SaveChangesAsync();
+
+                var amenities = await context.Amenities.ToListAsync();
+
+                Assert.DoesNotContain(ament, amenities);
+            }
+        }
+
+        [Fact]
         public void CanGetHotelRoomNumber()
         {
             HotelRoom hr = new HotelRoom();
@@ -374,64 +466,22 @@ namespace asyncInnTest
         }
 
         [Fact]
-        public void CanGetAmenity()
-        {
-            Amenities am = new Amenities();
-            am.Name = "A/C";
-
-            Assert.Equal("A/C", am.Name);
-        }
-
-        [Fact]
-        public void CanSetAmenity()
-        {
-            Amenities am = new Amenities();
-            am.Name = "A/C";
-
-            am.Name = "Hottub";
-            Assert.Equal("Hottub", am.Name);
-        }
-
-        [Fact]
-        public async void CreateAndReadAmenity()
+        public async void CreateAndReadRoomAmenity()
         {
             DbContextOptions<AsyncInnDbContext> options =
             new DbContextOptionsBuilder<AsyncInnDbContext>()
-            .UseInMemoryDatabase("CreateAmenity")
+            .UseInMemoryDatabase("CreateRoomAmenity")
             .Options;
 
             using (AsyncInnDbContext context = new AsyncInnDbContext(options))
             {
                 Amenities ament = new Amenities();
-                ament.Name = "Heated toliet";
-
-                context.Amenities.Add(ament);
-                await context.SaveChangesAsync();
-
-                var amenities = await context.Amenities.FirstOrDefaultAsync(x => x.Name == ament.Name);
-
-                Assert.Equal("Heated toliet", amenities.Name);
-            }
-        }
-
-        [Fact]
-        public async void UpdateAmenity()
-        {
-            DbContextOptions<AsyncInnDbContext> options =
-            new DbContextOptionsBuilder<AsyncInnDbContext>()
-            .UseInMemoryDatabase("UpdateAmenity")
-            .Options;
-
-            using (AsyncInnDbContext context = new AsyncInnDbContext(options))
-            {
-                Amenities ament = new Amenities();
-                ament.Name = "Heated toliet";
-
-                context.Amenities.Add(ament);
-                await context.SaveChangesAsync();
-
                 ament.Name = "Plunger";
-                context.Amenities.Update(ament);
+
+                RoomAmenities ra = new RoomAmenities();
+                ra.Amenity = ament;
+
+                context.RoomAmenity.Add(ra);
                 await context.SaveChangesAsync();
 
                 var amenities = await context.Amenities.FirstOrDefaultAsync(x => x.Name == ament.Name);
@@ -441,27 +491,30 @@ namespace asyncInnTest
         }
 
         [Fact]
-        public async void DeleteAmenity()
+        public async void DeleteRoomAmenity()
         {
             DbContextOptions<AsyncInnDbContext> options =
             new DbContextOptionsBuilder<AsyncInnDbContext>()
-            .UseInMemoryDatabase("DeleteAmenity")
+            .UseInMemoryDatabase("DeleteRoomAmenity")
             .Options;
 
             using (AsyncInnDbContext context = new AsyncInnDbContext(options))
             {
                 Amenities ament = new Amenities();
-                ament.Name = "Heated toliet";
+                ament.Name = "Plunger";
 
-                context.Amenities.Add(ament);
+                RoomAmenities ra = new RoomAmenities();
+                ra.Amenity = ament;
+
+                context.RoomAmenity.Add(ra);
                 await context.SaveChangesAsync();
 
-                context.Amenities.Remove(ament);
+                context.RoomAmenity.Remove(ra);
                 await context.SaveChangesAsync();
 
-                var amenities = await context.Amenities.ToListAsync();
+                var amenities = await context.RoomAmenity.ToListAsync();
 
-                Assert.DoesNotContain(ament, amenities);
+                Assert.DoesNotContain(ra, amenities);
             }
         }
     }
