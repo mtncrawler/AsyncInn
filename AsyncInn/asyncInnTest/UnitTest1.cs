@@ -1,6 +1,9 @@
+using AsyncInn.Data;
 using AsyncInn.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using Xunit;
+using System.Linq;
 
 namespace asyncInnTest
 {
@@ -174,6 +177,77 @@ namespace asyncInnTest
             Assert.False(hr.PetFriendly);
         }
 
+        [Fact]
+        public async void CreateAndReadRoom()
+        {
+            DbContextOptions<AsyncInnDbContext> options =
+            new DbContextOptionsBuilder<AsyncInnDbContext>()
+            .UseInMemoryDatabase("Create Room")
+            .Options;
 
+            using (AsyncInnDbContext context = new AsyncInnDbContext(options))
+            {
+                Room room = new Room();
+                room.Name = "Slumber Party";
+
+                context.Rooms.Add(room);
+                await context.SaveChangesAsync();
+
+                var roomName = await context.Rooms.FirstOrDefaultAsync(x => x.Name == room.Name);
+
+                Assert.Equal("Slumber Party", room.Name);
+            }
+        }
+
+        [Fact]
+        public async void UpdateRoom()
+        {
+            DbContextOptions<AsyncInnDbContext> options =
+            new DbContextOptionsBuilder<AsyncInnDbContext>()
+            .UseInMemoryDatabase("UpdateRoom")
+            .Options;
+
+            using (AsyncInnDbContext context = new AsyncInnDbContext(options))
+            {
+                Room room = new Room();
+                room.Name = "Slumber Party";
+
+                context.Rooms.Add(room);
+                await context.SaveChangesAsync();
+
+                room.Name = "Red Room";
+                context.Update(room);
+                await context.SaveChangesAsync();
+
+                var roomName = await context.Rooms.FirstOrDefaultAsync(x => x.Name == room.Name);
+
+                Assert.Equal("Red Room", room.Name);
+            }
+        }
+
+        [Fact]
+        public async void DeleteRoom()
+        {
+            DbContextOptions<AsyncInnDbContext> options =
+            new DbContextOptionsBuilder<AsyncInnDbContext>()
+            .UseInMemoryDatabase("DeleteRoom")
+            .Options;
+
+            using (AsyncInnDbContext context = new AsyncInnDbContext(options))
+            {
+                Room room = new Room();
+                room.Name = "Slumber Party";
+
+                context.Rooms.Add(room);
+                await context.SaveChangesAsync();
+
+                context.Rooms.Remove(room);
+                await context.SaveChangesAsync();
+
+                var rooms = await context.Rooms.ToListAsync();
+
+                Assert.DoesNotContain(room, rooms);
+            }
+        }
     }
 }
