@@ -282,6 +282,25 @@ namespace asyncInnTest
         }
 
         [Fact]
+        public void CanGetHotelRoomPetFriendliness()
+        {
+            HotelRoom hr = new HotelRoom();
+            hr.PetFriendly = true;
+
+            Assert.True(hr.PetFriendly);
+        }
+
+        [Fact]
+        public void CanSetHotelRoomPetFriendliness()
+        {
+            HotelRoom hr = new HotelRoom();
+            hr.PetFriendly = true;
+
+            hr.PetFriendly = false;
+            Assert.False(hr.PetFriendly);
+        }
+
+        [Fact]
         public async void CreateAndReadHotelRoom()
         {
             DbContextOptions<AsyncInnDbContext> options =
@@ -374,23 +393,76 @@ namespace asyncInnTest
         }
 
         [Fact]
-        public void CanGetHotelRoomPetFriendliness()
+        public async void CreateAndReadAmenity()
         {
-            HotelRoom hr = new HotelRoom();
-            hr.PetFriendly = true;
+            DbContextOptions<AsyncInnDbContext> options =
+            new DbContextOptionsBuilder<AsyncInnDbContext>()
+            .UseInMemoryDatabase("CreateAmenity")
+            .Options;
 
-            Assert.True(hr.PetFriendly);
+            using (AsyncInnDbContext context = new AsyncInnDbContext(options))
+            {
+                Amenities ament = new Amenities();
+                ament.Name = "Heated toliet";
+
+                context.Amenities.Add(ament);
+                await context.SaveChangesAsync();
+
+                var amenities = await context.Amenities.FirstOrDefaultAsync(x => x.Name == ament.Name);
+
+                Assert.Equal("Heated toliet", amenities.Name);
+            }
         }
 
         [Fact]
-        public void CanSetHotelRoomPetFriendliness()
+        public async void UpdateAmenity()
         {
-            HotelRoom hr = new HotelRoom();
-            hr.PetFriendly = true;
+            DbContextOptions<AsyncInnDbContext> options =
+            new DbContextOptionsBuilder<AsyncInnDbContext>()
+            .UseInMemoryDatabase("UpdateAmenity")
+            .Options;
 
-            hr.PetFriendly = false;
-            Assert.False(hr.PetFriendly);
+            using (AsyncInnDbContext context = new AsyncInnDbContext(options))
+            {
+                Amenities ament = new Amenities();
+                ament.Name = "Heated toliet";
+
+                context.Amenities.Add(ament);
+                await context.SaveChangesAsync();
+
+                ament.Name = "Plunger";
+                context.Amenities.Update(ament);
+                await context.SaveChangesAsync();
+
+                var amenities = await context.Amenities.FirstOrDefaultAsync(x => x.Name == ament.Name);
+
+                Assert.Equal("Plunger", amenities.Name);
+            }
         }
 
+        [Fact]
+        public async void DeleteAmenity()
+        {
+            DbContextOptions<AsyncInnDbContext> options =
+            new DbContextOptionsBuilder<AsyncInnDbContext>()
+            .UseInMemoryDatabase("DeleteAmenity")
+            .Options;
+
+            using (AsyncInnDbContext context = new AsyncInnDbContext(options))
+            {
+                Amenities ament = new Amenities();
+                ament.Name = "Heated toliet";
+
+                context.Amenities.Add(ament);
+                await context.SaveChangesAsync();
+
+                context.Amenities.Remove(ament);
+                await context.SaveChangesAsync();
+
+                var amenities = await context.Amenities.ToListAsync();
+
+                Assert.DoesNotContain(ament, amenities);
+            }
+        }
     }
 }
