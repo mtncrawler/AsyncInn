@@ -5,17 +5,23 @@
     Layout = "_Layout";
 }
 
-<h2>Details</h2>
+<h2>Hotel Room Details</h2>
 
 <div>
-    <h4>HotelRoom</h4>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.RoomID)
+            @Html.DisplayNameFor(model => model.Hotel)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.RoomID)
+            @Html.DisplayFor(model => model.Hotel.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Room)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Room.Name)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Rate)
@@ -28,12 +34,6 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.PetFriendly)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Hotel)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Hotel.ID)
         </dd>
     </dl>
 </div>

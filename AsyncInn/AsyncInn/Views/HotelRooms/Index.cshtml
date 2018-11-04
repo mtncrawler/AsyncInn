@@ -8,13 +8,13 @@
 <h2>Hotel Rooms</h2>
 
 <p>
-    <button asp-action="Create">Add New Hotel Room</button>
+    <a class="button" asp-action="Create">Add Hotel Room</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.RoomID)
+                @Html.DisplayNameFor(model => model.Room)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Rate)
@@ -32,7 +32,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.RoomID)
+                @Html.DisplayFor(modelItem => item.Room.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Rate)
@@ -41,12 +41,11 @@
                 @Html.DisplayFor(modelItem => item.PetFriendly)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Hotel.ID)
+                @Html.DisplayFor(modelItem => item.Hotel.Name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Details", "Details", new { id=item.RoomID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.RoomID })
             </td>
         </tr>
 }
