@@ -12,3 +12,16 @@ https://asyncinncf.azurewebsites.net/
 2.	open AsyncInn.sln
 3.	run IIS server  
 4.	enjoy the app!  
+
+## Database Schema  
+![Database Schema](assets/asyncInnDbSchema.png "AsyncInn Db Schema")  
+
+Hotels: This table holds the hotel name, address, and phone number for all locations. It maintains a primary key ID for each hotel. It is referenced by the primary key in the hotel rooms table.  
+
+Rooms: This table containts the room name, layout, and unique ID as its primary key. The layout references a enum for the three layout types. It is referenced in the hotel rooms and room amenities tables.  
+
+Hotel Rooms: This table contains the hotel ID, room ID, room number, rate, and pet friendly status of all rooms. Its unique identifier is a composite key of the hotel ID and room number. It is referenced by the hotel and room tables.  
+
+Amenities: This table contains the amenity name and unique ID number. It is referenced in the room amenities table.  
+
+Room Amenities: This table contains the which rooms have which amenities. It is referenced by the amenities and room tables.  
