@@ -14,6 +14,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Hotel)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Room)
             </th>
             <th>
@@ -22,15 +25,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.PetFriendly)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Hotel)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hotel.Name)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Room.Name)
             </td>
@@ -41,10 +44,7 @@
                 @Html.DisplayFor(modelItem => item.PetFriendly)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Hotel.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id=item.RoomID }) |
+                @Html.ActionLink("Edit", "Edit", new { id=item.RoomID }) |
                 @Html.ActionLink("Delete", "Delete", new { id=item.RoomID })
             </td>
         </tr>

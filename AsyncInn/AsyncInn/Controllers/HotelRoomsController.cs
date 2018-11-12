@@ -22,7 +22,7 @@ namespace AsyncInn.Controllers
         // GET: HotelRooms
         public async Task<IActionResult> Index()
         {
-            var asyncInnDbContext = _context.HotelRooms.Include(h => h.Hotel);
+            var asyncInnDbContext = _context.HotelRooms.Include(h => h.Hotel).Include(r => r.Room);
             return View(await asyncInnDbContext.ToListAsync());
         }
 
@@ -72,14 +72,14 @@ namespace AsyncInn.Controllers
         }
 
         // GET: HotelRooms/Edit/5
-        public async Task<IActionResult> Edit(int? hotelID, int roomID)
+        public async Task<IActionResult> Edit(int? hotelID)
         {
             if (hotelID == null)
             {
                 return NotFound();
             }
 
-            var hotelRoom = await _context.HotelRooms.FindAsync(hotelID, roomID);
+            HotelRoom hotelRoom = await _context.HotelRooms.FindAsync(hotelID);
             if (hotelRoom == null)
             {
                 return NotFound();
