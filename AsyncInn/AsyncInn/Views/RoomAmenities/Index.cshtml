@@ -32,8 +32,8 @@
                 @Html.DisplayFor(modelItem => item.Rooms.Name)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id=item.RoomID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.RoomID })
+                @*<a asp-action="Delete" asp-route-id="@item.RoomID">Delete</a>*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.AmenitiesID })
             </td>
         </tr>
 }

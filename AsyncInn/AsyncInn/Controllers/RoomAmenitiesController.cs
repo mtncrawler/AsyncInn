@@ -150,9 +150,9 @@ namespace AsyncInn.Views
         // POST: RoomAmenities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int RoomID, int AmenitiesID)
         {
-            var roomAmenities = await _context.RoomAmenity.FindAsync(id);
+            var roomAmenities = await _context.RoomAmenity.FindAsync(AmenitiesID, RoomID);
             _context.RoomAmenity.Remove(roomAmenities);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
