@@ -20,6 +20,9 @@
                 @Html.DisplayNameFor(model => model.Room)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.RoomNumber)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Rate)
             </th>
             <th>
@@ -38,14 +41,17 @@
                 @Html.DisplayFor(modelItem => item.Room.Name)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.RoomNumber)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Rate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PetFriendly)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.RoomID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.RoomID })
+                @Html.ActionLink("Edit", "Edit", new { hotelID=item.HotelID, roomNumber=item.RoomNumber }) |
+                @Html.ActionLink("Delete", "Delete", new { hotelID = item.HotelID, roomNumber = item.RoomNumber })
             </td>
         </tr>
 }

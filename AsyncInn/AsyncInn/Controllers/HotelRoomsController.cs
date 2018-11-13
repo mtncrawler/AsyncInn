@@ -127,16 +127,17 @@ namespace AsyncInn.Controllers
         }
 
         // GET: HotelRooms/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? hotelID, int roomNumber)
         {
-            if (id == null)
+            if (hotelID == null)
             {
                 return NotFound();
             }
 
             var hotelRoom = await _context.HotelRooms
                 .Include(h => h.Hotel)
-                .FirstOrDefaultAsync(m => m.HotelID == id);
+                .Include(r => r.Room)
+                .FirstOrDefaultAsync(m => m.HotelID == hotelID && m.RoomNumber == roomNumber);
             if (hotelRoom == null)
             {
                 return NotFound();
@@ -148,9 +149,9 @@ namespace AsyncInn.Controllers
         // POST: HotelRooms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int hotelID, int roomNumber)
         {
-            var hotelRoom = await _context.HotelRooms.FindAsync(id);
+            var hotelRoom = await _context.HotelRooms.FirstOrDefaultAsync(m => m.HotelID == hotelID && m.RoomNumber == roomNumber);
             _context.HotelRooms.Remove(hotelRoom);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
